@@ -151,51 +151,6 @@ dev.off()
 
 
 
-############################################################################
-
-### TEST ASSOCIATIONS WITH SMOKING AND BMI AND PLOT 
-
-setwd("Y:/Danni/s100b_project/Submission_prep/Plots/Age_sex/")
-
-EWAS <- read.csv("s100b_bayes_phenotypes_EWAS_781.csv")
-
-df <- EWAS
-
-library(ggpmisc)
-library(ggpubr)  
-
-pdf("s100b_W2_outliers_removed_plotted_by_smokingScore_V2.pdf")
-model1=lm(s100b~smokingScore, df) # no association
-ggplot(df, aes(x=smokingScore, y=s100b)) + geom_point(color = "dodgerblue2") + geom_smooth(method=lm, color = "dodgerblue2", se=TRUE, level=0.95) +
-stat_cor(aes(label = ..r.label..), method = "pearson", cor.coef.name = "r", size = 7) + theme_minimal() + theme_classic() + 
-  theme(legend.title = element_blank(),
-    legend.position = "none", 
-    axis.title.x = element_text(size = 14), 
-    axis.text.x = element_text(size = 14),
-    axis.text.y = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    plot.title = element_text(size = 14),
-    axis.title.x.bottom = element_text(margin = margin(14, 0, 0, 0))) + ylab("S100β Wave 2") + xlab("EpiSmokEr")
-dev.off()
-
-pdf("s100b_W2_outliers_removed_plotted_by_BMI_V2.pdf")
-model1=lm(s100b~bmi_w2, df) # an association
-ggplot(df, aes(x=bmi_w2, y=s100b)) + geom_point(color = "firebrick2") + geom_smooth(method=lm, color = "firebrick2", se=TRUE, level=0.95) +
-stat_cor(aes(label = ..r.label..), method = "pearson", cor.coef.name = "r", size = 7) + theme_minimal() + theme_classic() + 
-  theme(legend.title = element_blank(),
-    legend.position = "none", 
-    axis.title.x = element_text(size = 14), 
-    axis.text.x = element_text(size = 14),
-    axis.text.y = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    plot.title = element_text(size = 14),
-    axis.title.x.bottom = element_text(margin = margin(14, 0, 0, 0))) + ylab("S100β Wave 2") + xlab("BMI")
-dev.off()
-
-
-
-
-
 
 
 

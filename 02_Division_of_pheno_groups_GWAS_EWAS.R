@@ -143,8 +143,31 @@ write.table(pheno2, file = "/Cluster_Filespace/Marioni_Group/Danni/s100b_project
 ######################################################################################
 
 
+# Read phenotype files back in 
 
+# These have the IDs 
+EWAS <- read.csv("/Cluster_Filespace/Marioni_Group/Danni/s100b_project/BayesR_T2/s100b_bayes_phenotypes_EWAS_722.csv")
+GWAS <- read.csv("/Cluster_Filespace/Marioni_Group/Danni/s100b_project/BayesR_T2/s100b_bayes_phenotypes_GWAS_769.csv")    
 
+# File with all measurements with 6 points removed
+s100b <- read.csv("/Cluster_Filespace/Marioni_Group/Danni/s100b_project/W2_s100b_6_outliers_above_4_sd_from_mean_removed.csv")
+
+min(s100b$s100b) # 0.01
+max(s100b$s100b) # 0.26
+mean(s100b$s100b) # 0.09
+sd(s100b$s100b) # 0.04
+
+# Subset the s100b measurements to those in GWAS and find range 
+
+s100 <- s100b[which(s100b$lbc36no %in% GWAS$ID),]
+min(s100$s100b) # 0.01
+max(s100$s100b) # 0.26
+
+# Subset the s100b measurements to those in EWAS and find range 
+
+s100 <- s100b[which(s100b$lbc36no %in% EWAS$ID),]
+min(s100$s100b) # 0.01
+max(s100$s100b) # 0.26
 
 
 
