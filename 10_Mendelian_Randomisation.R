@@ -124,9 +124,6 @@ ex <- read.delim("/Cluster_Filespace/Marioni_Group/Rob/Somalogic/fastGWA_Dec/MR_
 file <- read.csv("/Cluster_Filespace/Marioni_Group/Danni/s100b_project/PLINK_GWAS_060921/s100b_GWAS_output.txt") # s100b hits (all)
 file <- file[c(1,3,2,4,5,9,6,10,11,13,3,14)] # set order to match example input rob 
 names(file) <- names(ex) # set names to match example input rob 
-# file[file==""] <- NA
-# table(is.na(file))
-# file <- na.omit(file)
 write.table(file, "/Cluster_Filespace/Marioni_Group/Danni/s100b_project/PLINK_GWAS_060921/top_hits_rev.txt", quote = F, row.names = F)
 
 file2 <-"/Cluster_Filespace/Marioni_Group/Danni/s100b_project/PLINK_GWAS_060921/top_hits_reversed.txt"
@@ -167,6 +164,6 @@ dat2 <- dat[which(dat$mr_keep %in% TRUE),]
 
 ## Run MR 
 mr_results <- mr(dat2) 
-write.csv(mr_results, "/Cluster_Filespace/Marioni_Group/Danni/s100b_project/MR_coloc_090921/MR/MR_AD_to_s100b_rev.csv", row.names = F)
+write.csv(mr_results, "/Cluster_Filespace/Marioni_Group/Danni/s100b_project/MR_coloc_090921/MR/MR_AD_to_s100b_rev2.csv", row.names = F)
 
 
